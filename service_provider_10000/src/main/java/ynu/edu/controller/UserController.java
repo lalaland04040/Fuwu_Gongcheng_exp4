@@ -1,4 +1,4 @@
-package org.example.edu.controller;
+package ynu.edu.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,7 @@ public class UserController {
 
         CommonResult<User> result =new CommonResult<>();
         int code=200;
-        String message="success";
+        String message="success(10000)";
 
         try{
             User u =new User(userId,"小明","123456");

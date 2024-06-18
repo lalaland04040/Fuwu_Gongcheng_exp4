@@ -1,12 +1,12 @@
 server:
-  port: 19000
+  port: 19001
 eureka:
   instance:
-    hostname: "localhost"
+    hostname: "eurekaServer19001"
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: "http://${eureka.instance.hostname}:${server.port}/eureka/"
+      defaultZone: "http://eurekaServer19000:19000/eureka/"
   server:
     enable-self-preservation: false

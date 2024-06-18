@@ -2,18 +2,23 @@ package ynu.edu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+import ynu.edu.rule.CustomLoadBalancerConfig;
+import ynu.edu.rule.CustomThreeTimeLoadBalancerConfig;
+
 
 @SpringBootApplication
-public class ConsumerApplication16000 {
+@EnableFeignClients
+@LoadBalancerClient(name="provider-server",configuration = CustomThreeTimeLoadBalancerConfig.class)
+public class ConsumerApplication15000 {
 
 
-    @Bean
-    public RestTemplate getRestTemplate(){
-        return new RestTemplate();
+
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication15000.class, args);
     }
-
-    public static void main(String[] args){SpringApplication.run(ConsumerApplication16000.class,args);}
-
 }

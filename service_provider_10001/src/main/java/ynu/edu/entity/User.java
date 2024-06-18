@@ -10,9 +10,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
-    private Integer userId;
+    private  Integer userId;
     private String userName;
-    private String passWord;
-
-
+    private  String password;
 }
+

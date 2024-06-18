@@ -1,5 +1,26 @@
 server:
-  port: 16000
+  port: 15000
 spring:
   application:
     name: "consumer-server"
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: "${spring.cloud.client.ip-address}:${server.port}"
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+  client:
+    service-url:
+      defaultZone: "http://eurekaServer19000:19000/eureka/,http://eurekaServer19001:19001/eureka/"
+
+resilience4j:
+  ratelimiter:
+    configs:
+      default:
+          limitRefreshPeriod: 2s
+          limitForPeriod: 5
+          timeoutDuration: 0
+
+    instances:
+      rate1:
+        base-config: default
